@@ -1,5 +1,5 @@
 module GoogleAuthenticatorRails # :nodoc:
-  module ActiveRecord # :nodoc:
+  module Mongoid # :nodoc:
     module ActsAsGoogleAuthenticated # :nodoc:
       def self.included(base)
         base.extend ClassMethods
@@ -108,19 +108,22 @@ module GoogleAuthenticatorRails # :nodoc:
             @google_secrets_encrypted = false
           end
 
+
+          field @google_secret_column, type: String
+          # self.singleton_class.class_eval { field @google_secret_column, type: String }
+          
+
           puts ":skip_attr_accessible is no longer required.  Called from #{Kernel.caller[0]}}" if options.has_key?(:skip_attr_accessible)
 
           [:google_label_column, :google_label_method, :google_secret_column, :google_lookup_token, :google_drift, :google_issuer, :google_qr_size, :google_secrets_encrypted].each do |cattr|
             self.singleton_class.class_eval { attr_reader cattr }
           end
 
-          include GoogleAuthenticatorRails::ActiveRecord::Helpers
+          include GoogleAuthenticatorRails::Mongoid::Helpers
         end
       end
     end
   end
 end
 
-if defined?(ActiveRecord)
-  ActiveRecord::Base.send(:include, GoogleAuthenticatorRails::ActiveRecord::ActsAsGoogleAuthenticated)
-end
+# ActiveRecord::Base.send(:include, GoogleAuthenticatorRails::ActiveRecord::ActsAsGoogleAuthenticated)

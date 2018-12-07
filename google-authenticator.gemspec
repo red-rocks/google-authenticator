@@ -8,11 +8,11 @@ minor  = version_info[1].to_i
 hotfix = version_info.last.to_i
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Jared McFarland"]
-  gem.email         = ["jared.online@gmail.com"]
-  gem.description   = %q{Add the ability to use the Google Authenticator with ActiveRecord.}
-  gem.summary       = %q{Add the ability to use the Google Authenticator with ActiveRecord.}
-  gem.homepage      = "http://github.com/jaredonline/google-authenticator"
+  gem.authors       = ["Alexander Kiseliev", "Jared McFarland"]
+  gem.email         = ["i43ack@gmail.com", "jared.online@gmail.com"]
+  gem.description   = %q{Add the ability to use the Google Authenticator with ActiveRecord and Mongoid.}
+  gem.summary       = %q{Add the ability to use the Google Authenticator with ActiveRecord and Mongoid.}
+  gem.homepage      = "http://github.com/red-rocks/google-authenticator"
 
   gem.files = Dir['lib/**/*.{rb,rake}'] + Dir['bin/*']
   gem.files += Dir['[A-Z]*'] + Dir['spec/**/*.rb']
@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "rotp", "= 3.3.0"
   gem.add_dependency "rails"
-  gem.add_dependency "activerecord"
+  # gem.add_dependency "activerecord"
   gem.add_dependency "google-qr"
   gem.add_dependency "actionpack"
 

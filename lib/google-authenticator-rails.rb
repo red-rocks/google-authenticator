@@ -1,7 +1,7 @@
 # Stuff the gem requires
 #
 require 'active_support'
-require 'active_record'
+# require 'active_record'
 require 'openssl'
 require 'rotp'
 require 'google-qr'
@@ -15,6 +15,7 @@ GOOGLE_AUTHENTICATOR_RAILS_PATH = File.dirname(__FILE__) + "/google-authenticato
 
   "action_controller",
   "active_record",
+  "mongoid",
   "session"
 ].each do |library|
    require GOOGLE_AUTHENTICATOR_RAILS_PATH + library
